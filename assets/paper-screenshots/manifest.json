@@ -424,15 +424,23 @@
     "CoTraining": {
       "pdf": "https://www.roboticsproceedings.org/rss21/p109.pdf",
       "available_figure_numbers": [],
-      "screenshots": {}
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/CoTraining-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: Sim-and-Real Co-Training overview",
+          "crop_pdf_points": [
+            305.0,
+            190.0,
+            577.0,
+            590.0
+          ]
+        }
+      }
     }
   },
   "failures": [
-    {
-      "paper": "CoTraining",
-      "kind": "overview",
-      "error": "caption not located"
-    },
     {
       "paper": "CoTraining",
       "kind": "architecture",
