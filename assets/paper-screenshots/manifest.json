@@ -156,12 +156,12 @@
           "path": "assets/paper-screenshots/SPARR-architecture.jpg",
           "page": 4,
           "figure": 3,
-          "caption": "Fig. 3: Illustration of asymmetric policy combination. Com-",
+          "caption": "Fig. 3: Asymmetric base and residual policy combination",
           "crop_pdf_points": [
-            25.0,
-            32.0,
-            587.0,
-            211.2
+            48.0,
+            51.0,
+            308.0,
+            228.0
           ]
         }
       }
