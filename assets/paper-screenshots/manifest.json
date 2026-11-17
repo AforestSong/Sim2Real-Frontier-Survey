@@ -436,15 +436,21 @@
             577.0,
             590.0
           ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/CoTraining-architecture.jpg",
+          "page": 4,
+          "figure": 2,
+          "caption": "Fig. 2: Method overview: task-aware digital cousins and sim-real policy co-training",
+          "crop_pdf_points": [
+            44.0,
+            47.0,
+            574.0,
+            280.0
+          ]
         }
       }
     }
   },
-  "failures": [
-    {
-      "paper": "CoTraining",
-      "kind": "architecture",
-      "error": "caption not located"
-    }
-  ]
+  "failures": []
 }
