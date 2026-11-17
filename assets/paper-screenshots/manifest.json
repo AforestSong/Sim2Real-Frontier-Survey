@@ -1,0 +1,427 @@
+{
+  "generated_from": "original paper PDFs, cropped as screenshots with PyMuPDF",
+  "note": "Figure number and PDF page are reported individually; images may include immediate neighboring captions.",
+  "papers": {
+    "GSWorld": {
+      "pdf": "https://3dgsworld.github.io/resources/gsworld.pdf",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/GSWorld-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: GSWorld leverages 3DGS reconstruction to render photo-realistic robot scenes, supports multiple policy learning",
+          "crop_pdf_points": [
+            25.0,
+            177.7,
+            587.0,
+            467.7
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/GSWorld-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Fig. 2: GSWorld provides an interface on top of existing simulators to render photorealistic assets. Our GSDF assets are",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            242.2
+          ]
+        }
+      }
+    },
+    "RE3SIM": {
+      "pdf": "https://arxiv.org/pdf/2502.08645",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/RE3SIM-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: Illustration of RE3SIM. a) RE3SIM allows zero-shot policy transfer on various tasks. b) The system pipeline to",
+          "crop_pdf_points": [
+            25.0,
+            130.5,
+            587.0,
+            422.0
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/RE3SIM-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Fig. 2: Illustration of the proposed real-to-sim-to-real system, RE3SIM. It leverages 3D reconstruction and a physics-based",
+          "crop_pdf_points": [
+            25.0,
+            55.0,
+            587.0,
+            346.3
+          ]
+        }
+      }
+    },
+    "RoboRender": {
+      "pdf": "https://arxiv.org/pdf/2610.09254",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/RoboRender-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: Overview. From simulation trajectories (Left), RoboRender generates diverse and photorealistic videos oriented for",
+          "crop_pdf_points": [
+            25.0,
+            144.3,
+            587.0,
+            434.3
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/RoboRender-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Fig. 2: RoboRender video generation model. During training, raw RGB videos are VAE-encoded and noised to form the",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            266.7
+          ]
+        }
+      }
+    },
+    "SPARR": {
+      "pdf": "https://arxiv.org/pdf/2602.23253",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/SPARR-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: Illustration of our approach, SPARR. (a) A specialist policy is pre-trained in simulation. (b) The simulation policy is deployed",
+          "crop_pdf_points": [
+            25.0,
+            105.0,
+            587.0,
+            285.3
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/SPARR-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Fig. 2: Overview of experimental tasks. (Top) 10 AutoMate [6] assembly tasks. AutoMate provides a dataset of 100 assembly tasks",
+          "crop_pdf_points": [
+            25.0,
+            60.4,
+            587.0,
+            350.3
+          ]
+        }
+      }
+    },
+    "SoMA": {
+      "pdf": "https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf",
+      "available_figure_numbers": [
+        1,
+        2,
+        3
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/SoMA-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Figure 1. SoMA is a GS neural simulator that reconstructs and simulates deformable object dynamics from real-world robot manipulation.",
+          "crop_pdf_points": [
+            25.0,
+            121.2,
+            587.0,
+            410.2
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/SoMA-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Figure 2. Framework of SoMA. SoMA takes RGB observations and robot joint-space actions collected from real-world manipulation as",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            263.2
+          ]
+        }
+      }
+    },
+    "PIN-WM": {
+      "pdf": "https://www.roboticsproceedings.org/rss21/p153.pdf",
+      "available_figure_numbers": [],
+      "screenshots": {}
+    },
+    "RoboTwin": {
+      "pdf": "https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/RoboTwin-overview.jpg",
+          "page": 2,
+          "figure": 1,
+          "caption": "Figure 1. RoboTwin 2.0 uses an MLLM-driven pipeline for automatic data synthesis and domain randomization to boost policy",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            244.0
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/RoboTwin-architecture.jpg",
+          "page": 5,
+          "figure": 3,
+          "caption": "Figure 3. Visualization of domain randomization and our texture library.",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            206.9
+          ]
+        }
+      }
+    },
+    "RoboDream": {
+      "pdf": "https://arxiv.org/pdf/2606.02577",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/RoboDream-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Fig. 1: RoboDream generates robot demonstrations with novel objects, in novel scenes, from novel views via compositional",
+          "crop_pdf_points": [
+            25.0,
+            110.2,
+            587.0,
+            400.2
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/RoboDream-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Fig. 2: The RoboDream architecture. The model generates a video o1:T conditioned on multiple inputs: a rendered robot-only",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            301.9
+          ]
+        }
+      }
+    },
+    "R2R2R": {
+      "pdf": "https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/R2R2R-overview.jpg",
+          "page": 2,
+          "figure": 1,
+          "caption": "Figure 1: Real2Render2Real generating robot training data for the task of “Put the Mug on the Coffee Maker”.",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            257.8
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/R2R2R-architecture.jpg",
+          "page": 3,
+          "figure": 2,
+          "caption": "Figure 2: Data Generation Efficiency and Average Policy Performance Across Manipulation Tasks.",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            238.4
+          ]
+        }
+      }
+    },
+    "SCIZOR": {
+      "pdf": "https://arxiv.org/pdf/2505.22626",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/SCIZOR-overview.jpg",
+          "page": 2,
+          "figure": 1,
+          "caption": "Figure 1: SCIZOR overview. Each trajectory from the original robotic datasets is simultaneously",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            243.2
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/SCIZOR-architecture.jpg",
+          "page": 4,
+          "figure": 2,
+          "caption": "Figure 2:",
+          "crop_pdf_points": [
+            18.0,
+            57.4,
+            299.9,
+            297.4
+          ]
+        }
+      }
+    },
+    "MetaGenSim": {
+      "pdf": "https://arxiv.org/pdf/2610.19479",
+      "available_figure_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "screenshots": {
+        "overview": {
+          "path": "assets/paper-screenshots/MetaGenSim-overview.jpg",
+          "page": 1,
+          "figure": 1,
+          "caption": "Figure 1:",
+          "crop_pdf_points": [
+            18.0,
+            365.9,
+            299.9,
+            604.9
+          ]
+        },
+        "architecture": {
+          "path": "assets/paper-screenshots/MetaGenSim-architecture.jpg",
+          "page": 4,
+          "figure": 2,
+          "caption": "Figure 2: MetaGenSim. We propose a meta-learning framework for Active Generative Simulation with three",
+          "crop_pdf_points": [
+            25.0,
+            32.0,
+            587.0,
+            219.3
+          ]
+        }
+      }
+    },
+    "CoTraining": {
+      "pdf": "https://www.roboticsproceedings.org/rss21/p109.pdf",
+      "available_figure_numbers": [],
+      "screenshots": {}
+    }
+  },
+  "failures": [
+    {
+      "paper": "PIN-WM",
+      "kind": "overview",
+      "error": "caption not located"
+    },
+    {
+      "paper": "PIN-WM",
+      "kind": "architecture",
+      "error": "caption not located"
+    },
+    {
+      "paper": "CoTraining",
+      "kind": "overview",
+      "error": "caption not located"
+    },
+    {
+      "paper": "CoTraining",
+      "kind": "architecture",
+      "error": "caption not located"
+    }
+  ]
+}
