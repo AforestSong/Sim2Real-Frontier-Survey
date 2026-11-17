@@ -42,6 +42,9 @@ MANUAL_CROPS = {
     "MetaGenSim": {
         "overview": (0, [32, 341, 585, 615], 1, "Figure 1: Active Generative Simulation overview"),
     },
+    "SPARR": {
+        "architecture": (3, [48, 51, 308, 228], 3, "Fig. 3: Asymmetric base and residual policy combination"),
+    },
     "SCIZOR": {
         "architecture": (3, [52, 64, 561, 303], 2, "Figure 2: SCIZOR architecture for suboptimal-transition removal and deduplication"),
     },
@@ -50,7 +53,7 @@ MANUAL_CROPS = {
         "architecture": (3, [44, 47, 574, 280], 2, "Fig. 2: Method overview: task-aware digital cousins and sim-real policy co-training"),
     },
 }
-REFRESH = {"SCIZOR", "SPARR"}
+REFRESH = {"SPARR"}
 
 FIG_RE = re.compile(r"^\s*(?:fig\.?|figure)\s*(\d+)\s*[:.\-\u2014]", re.IGNORECASE)
 SESSION = requests.Session()
@@ -145,7 +148,8 @@ def manual_screenshot(doc, spec, output):
     page_index, coords, figure_no, caption = spec
     page = doc[page_index]
     r = fitz.Rect(coords) & page.rect
-    pix = page.get_pixmap(matrix=fitz.Matrix(2.2, 2.2), clip=r, alpha=False)
+    scale = 3.0 if r.width < 350 else 2.2
+    pix = page.get_pixmap(matrix=fitz.Matrix(scale, scale), clip=r, alpha=False)
     import io
     im = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
     if im.width > 1900:
