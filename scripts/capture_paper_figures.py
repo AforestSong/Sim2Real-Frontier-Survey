@@ -44,6 +44,7 @@ MANUAL_CROPS = {
     },
     "CoTraining": {
         "overview": (0, [305, 190, 577, 590], 1, "Fig. 1: Sim-and-Real Co-Training overview"),
+        "architecture": (3, [44, 47, 574, 280], 2, "Fig. 2: Method overview: task-aware digital cousins and sim-real policy co-training"),
     },
 }
 REFRESH = {"CoTraining"}
@@ -167,11 +168,6 @@ def main():
         try:
             raw, paperurl = download_pdf(urls)
             doc = fitz.open(stream=raw, filetype="pdf")
-            if slug == "CoTraining":
-                for i in range(min(7,len(doc))):
-                    pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False)
-                    im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples)
-                    im.save(DEST/f"CoTraining-PDF-page-{i+1}-preview.jpg","JPEG",quality=85,optimize=True)
             found = scan_captions(doc)
             group = {"pdf": paperurl, "available_figure_numbers": sorted(set(c["figure"] for c in found)),
                      "screenshots": {}}
