@@ -71,6 +71,10 @@ flowchart TD
 - [官方论文 Figure 1（PDF）](https://arxiv.org/pdf/2606.02577)｜[作者项目及生成演示](https://junjieye.com/RoboDream/)｜[官方 Teaser 动画](https://github.com/Jay-Ye/RoboDream/blob/main/assets/teaser.gif)。
 - Teaser 是“轨迹复用/空手遥操/组合生成”的输出展示，不应与网络结构图混同。方法图重点应识别 rendered robot-only video、scene/object priors 和动作条件的融合方式。
 
+![RoboDream 作者发布的 Teaser 动画（非论文方法主图）](../../assets/paper-figures/RoboDream_teaser.gif)
+
+*作者原始图源：[点击核对](https://github.com/Jay-Ye/RoboDream/blob/main/assets/teaser.gif)；论文主图/展示图与下方中文重绘图已明确区分。*
+
 ![RoboDream 中文方法重绘](../../assets/methods/RoboDream.svg)
 
 ### ⑤ 核心技术与算法细节
@@ -174,6 +178,10 @@ CoRL 正式论文报告，在论文测试的真实操作场景中，一条人类
 ### ④ 方法总览与论文主图
 - [作者原论文 Figure 1：官方总览图](https://ut-austin-rpl.github.io/SCIZOR/images/teasor_figure_v2.5.png)｜[官方项目](https://ut-austin-rpl.github.io/SCIZOR/)。
 - 原图左侧是大规模混合质量轨迹，中间分为“次优转移”和“冗余转移”两条筛选支路，右侧是更紧凑的训练数据集与策略表现比较。
+
+![SCIZOR 原论文总览主图（本仓库留存）](../../assets/paper-figures/SCIZOR_overview.png)
+
+*作者原始图源：[点击核对](https://ut-austin-rpl.github.io/SCIZOR/images/teasor_figure_v2.5.png)；论文主图/展示图与下方中文重绘图已明确区分。*
 
 ![SCIZOR 中文方法重绘](../../assets/methods/SCIZOR.svg)
 

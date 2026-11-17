@@ -126,6 +126,10 @@ flowchart LR
 - [作者原始方法图（官方 PNG，原文件名 pipline.png）](https://pinwm.github.io/static/images/pipline.png)｜[RSS 正式论文](https://roboticsproceedings.org/rss21/p153.html)。
 - 原图主要展示视觉重建、可微物理辨识、形成物理数字近邻，以及在这些模型上通过 RL 学习操作策略的连续流程。注意数字近邻不是重新采集多组真实实验，而是从已经辨识的模型中产生变化。
 
+![PIN-WM 原论文方法主图（本仓库留存）](../../assets/paper-figures/PIN-WM_pipeline.png)
+
+*作者原始图源：[点击核对](https://pinwm.github.io/static/images/pipline.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+
 ![PIN-WM 中文方法重绘](../../assets/methods/PIN-WM.svg)
 
 ### ⑤ 核心技术与算法细节

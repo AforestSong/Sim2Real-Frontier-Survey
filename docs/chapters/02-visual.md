@@ -127,6 +127,10 @@ flowchart LR
 - [作者原始视频模型结构图（官方 PNG）](https://robo-render.github.io/static/images/fig2_model.png)｜[训练数据示意图](https://robo-render.github.io/static/images/training-data.png)。
 - 主图突出条件视频生成器：深度序列与机器人 RGB Mask 作为几何/本体条件，语言给出任务语义，多视角视频共同进入生成过程；输出 RGB 视频，动作序列由原仿真器沿用，而非让视频生成模型自主推断动作。
 
+![RoboRender 原论文视频模型主图（本仓库留存）](../../assets/paper-figures/RoboRender_model.png)
+
+*作者原始图源：[点击核对](https://robo-render.github.io/static/images/fig2_model.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+
 ![RoboRender 中文方法重绘](../../assets/methods/RoboRender.svg)
 
 ### ⑤ 核心技术与算法细节

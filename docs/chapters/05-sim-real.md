@@ -19,6 +19,10 @@
 - [作者原始 Method Figure（官方 PNG）](https://meta-gensim.github.io/static/images/method.png)｜[Algorithm 1 与可交互方法说明](https://meta-gensim.github.io/)。
 - 原图三部分：(a) 通过真实验证损失的元梯度训练 Rater；(b) 将样本效用映射到模拟器参数并用 KDE 构建参数效用分布；(c) 从该分布抽样生成新数据并 Sim-Real Co-train。
 
+![MetaGenSim 原论文三阶段方法图（本仓库留存）](../../assets/paper-figures/MetaGenSim_method.png)
+
+*作者原始图源：[点击核对](https://meta-gensim.github.io/static/images/method.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+
 ![MetaGenSim 中文方法重绘](../../assets/methods/MetaGenSim.svg)
 
 ### ⑤ 核心技术与算法细节
