@@ -154,14 +154,14 @@
         },
         "architecture": {
           "path": "assets/paper-screenshots/SPARR-architecture.jpg",
-          "page": 3,
-          "figure": 2,
-          "caption": "Fig. 2: Overview of experimental tasks. (Top) 10 AutoMate [6] assembly tasks. AutoMate provides a dataset of 100 assembly tasks",
+          "page": 4,
+          "figure": 3,
+          "caption": "Fig. 3: Illustration of asymmetric policy combination. Com-",
           "crop_pdf_points": [
             25.0,
-            60.4,
+            32.0,
             587.0,
-            350.3
+            211.2
           ]
         }
       }
@@ -372,12 +372,12 @@
           "path": "assets/paper-screenshots/SCIZOR-architecture.jpg",
           "page": 4,
           "figure": 2,
-          "caption": "Figure 2:",
+          "caption": "Figure 2: SCIZOR architecture for suboptimal-transition removal and deduplication",
           "crop_pdf_points": [
-            18.0,
-            57.4,
-            299.9,
-            297.4
+            52.0,
+            64.0,
+            561.0,
+            303.0
           ]
         }
       }
