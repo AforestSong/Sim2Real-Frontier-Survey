@@ -15,11 +15,25 @@
 ### ③ 研究动机与核心问题
 直接把仿真策略放到真机，最大的问题是小的接触位置误差在插入/卡扣装配中会被放大；然而从零开始真机 RL 又因稀疏奖励缺乏成功探索。SPARR 的关键假设是：**仿真策略虽不完美，仍能提供足够接近成功的行为和少量真实成功轨迹**，让残差策略在可行区域中学习，而不用从随机动作探索。
 
-### ④ 方法总览与论文主图
-- [作者原始 Pipeline Overview（PNG）](https://research.nvidia.com/labs/srl/projects/sparr/assets/overview.png)｜[论文](https://arxiv.org/abs/2602.23253)。
-- 原图分为三段：(a) 仿真预训练基础策略；(b) 在真机上执行基础策略并筛选成功 Rollout；(c) 用 Demo Buffer 和 Online RL Buffer 训练残差策略。执行动作是基础策略输出与残差动作的组合。
+### ④ 方法总览与原论文截图
 
-![SPARR 中文方法重绘](../../assets/methods/SPARR.svg)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2602.23253)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：仿真基础策略与真机残差学习路线**
+
+![SPARR 原论文主图 Figure 1](../../assets/paper-screenshots/SPARR-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://arxiv.org/pdf/2602.23253#page=1)。*
+
+**方法/架构图｜Figure 3：非对称基础策略与残差策略的动作组合**
+
+![SPARR 原论文第二张关键图 Figure 3](../../assets/paper-screenshots/SPARR-architecture.jpg)
+
+*原论文 Figure 3，PDF 第 4 页。[查看原文对应页](https://arxiv.org/pdf/2602.23253#page=4)。*
+
+**读图重点：** Fig.1 描述模拟预训练、真机成功轨迹和残差强化学习；Fig.3 解释两级策略的不同观测及动作叠加。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，训练具备强先验的基础策略。** 作者在 Isaac Lab 中用低维机器人/物体状态及密集奖励预训练特定装配任务策略。相比仅由 RGB 决策，基础策略利用仿真可获得的低维状态更容易形成稳定的装配基本动作。
@@ -70,11 +84,25 @@ flowchart TD
 ### ③ 研究动机与核心问题
 布料、线缆、毛绒玩具等软体具有大量连续自由度；用刚体关节模型描述并不自然，对真实材质的弹性参数、接触摩擦进行系统辨识也很困难。仅把视觉视频拟合得漂亮，不能预测机器人执行新动作后柔性物体会怎样变化。SoMA 的核心是**将动作条件和作用力机制直接写入学习式变形动力学**。
 
-### ④ 方法总览与论文主图
-- [作者原始 SoMA Framework（PNG）](https://city-super.github.io/SoMA/imgs_png/framework.png)｜[论文](https://proceedings.mlr.press/v306/huang26bh.html)。
-- 原图左边是真实多视角采集，中间分层高斯与不同时间步长的训练流程，右边是机器人与环境作用力对形变控制的机制。图的重点是粗—细两阶段训练和力驱动的状态推进。
+### ④ 方法总览与原论文截图
 
-![SoMA 中文方法重绘](../../assets/methods/SoMA.svg)
+下列图片均是从[原论文 PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：软体操作神经模拟总览**
+
+![SoMA 原论文主图 Figure 1](../../assets/paper-screenshots/SoMA-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf#page=1)。*
+
+**方法/架构图｜Figure 2：分层高斯和粗细时间尺度动力学训练框架**
+
+![SoMA 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/SoMA-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf#page=3)。*
+
+**读图重点：** 总览展示真实机器人交互与长时重模拟；框架图展开物体高斯、动作条件以及两阶段学习。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，采集动作可追溯的真实视频。** 输入包括真实 RGB 观测及机器人关节空间动作（而非只有物体轨迹或无动作的视频）；多视角信息提供了对物体三维形变的观察约束。
@@ -122,15 +150,25 @@ flowchart LR
 ### ③ 研究动机与核心问题
 非抓取操作的结果取决于摩擦、惯性、碰撞和反弹；手工随机给定这些参数可能生成大量根本不对应真实任务的物理世界。PIN-WM 的问题是：能否先从少量真实交互中恢复一个**可解释、可微调的三维刚体动力学模型**，再围绕真实参数附近的合理变化训练策略？
 
-### ④ 方法总览与论文主图
-- [作者原始方法图（官方 PNG，原文件名 pipline.png）](https://pinwm.github.io/static/images/pipline.png)｜[RSS 正式论文](https://roboticsproceedings.org/rss21/p153.html)。
-- 原图主要展示视觉重建、可微物理辨识、形成物理数字近邻，以及在这些模型上通过 RL 学习操作策略的连续流程。注意数字近邻不是重新采集多组真实实验，而是从已经辨识的模型中产生变化。
+### ④ 方法总览与原论文截图
 
-![PIN-WM 原论文方法主图（本仓库留存）](../../assets/paper-figures/PIN-WM_pipeline.png)
+下列图片均是从[原论文 PDF](https://www.roboticsproceedings.org/rss21/p153.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
 
-*作者原始图源：[点击核对](https://pinwm.github.io/static/images/pipline.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+**主图｜Figure 1：真实推动数据与物理数字近邻训练**
 
-![PIN-WM 中文方法重绘](../../assets/methods/PIN-WM.svg)
+![PIN-WM 原论文主图 Figure 1](../../assets/paper-screenshots/PIN-WM-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://www.roboticsproceedings.org/rss21/p153.pdf#page=1)。*
+
+**方法/架构图｜Figure 2：Real2Sim 可微辨识与 Sim2Real 策略训练结构**
+
+![PIN-WM 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/PIN-WM-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 4 页。[查看原文对应页](https://www.roboticsproceedings.org/rss21/p153.pdf#page=4)。*
+
+**读图重点：** 总览展示少量真实数据、数字近邻和真机转移；方法图突出 Gaussian 观测损失、可微物理参数及 RL。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，真实视觉交互与可渲染状态。** 用少量推动/拨动物体的真实轨迹提供图像序列和机器人动作；通过 3DGS 构建能从不同视角投影的物体外观，以渲染误差为动力学辨识提供监督，减少对真实物体状态逐帧人工标注的依赖。

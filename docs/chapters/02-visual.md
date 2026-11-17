@@ -15,11 +15,25 @@ GSWorld 提出一种把三维高斯泼溅（3DGS）与物理引擎结合的照�
 ### ③ 研究动机与核心问题
 纯 3DGS 重建可以让相机图片接近真实世界，但无法提供碰撞、物体可操作状态和下一步动作反馈；传统物理仿真虽可交互，却又存在明显的纹理、光照和场景几何偏差。因此，论文追求的不是“渲染最美”的静态场景，而是**照片级反馈和真实动作接口在同一个模拟系统内闭环运行**。它在研究对象上更接近可执行数字孪生，而非单纯的数据增强器。
 
-### ④ 方法总览与论文主图
-- [官方论文 Figure 1（PDF 第 1 页）](https://3dgsworld.github.io/resources/gsworld.pdf#page=1)；[作者仓库展示图（大文件，按需打开）](https://github.com/luccachiang/GSWorld/blob/main/resources/teaser.webp)。
-- Figure 1 左侧说明场景与机器人资产构建，中间说明 Real-to-Sim 的空间对齐，右侧列出 DAgger、RL 和视觉模仿学习等闭环应用。图的关键不是某个单一网络，而是 **GSDF 场景资产 → 渲染与物理联合模拟 → 策略交互** 的系统架构。
+### ④ 方法总览与原论文截图
 
-![GSWorld 中文方法重绘](../../assets/methods/GSWorld.svg)
+下列图片均是从[原论文 PDF](https://3dgsworld.github.io/resources/gsworld.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：可执行 3DGS 数字孪生的总体能力**
+
+![GSWorld 原论文主图 Figure 1](../../assets/paper-screenshots/GSWorld-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://3dgsworld.github.io/resources/gsworld.pdf#page=1)。*
+
+**方法/架构图｜Figure 2：GSDF 场景资产及物理仿真接口**
+
+![GSWorld 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/GSWorld-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://3dgsworld.github.io/resources/gsworld.pdf#page=3)。*
+
+**读图重点：** 主图显示实景场景重建和策略应用；第二张图展示 GSDF 与物理、视觉渲染的具体关系。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，真实场景尺度恢复。** 使用多视角采集、COLMAP 相机位姿估计和 ArUco 尺度基准，训练具有公制尺度的 3DGS；这一步解决“图片相似但实际米制尺寸不正确”的问题。官方脚本提供 COLMAP/GS 训练及资产导出接口。
@@ -68,11 +82,25 @@ flowchart TD
 ### ③ 研究动机与核心问题
 将真实环境的照片“贴”到模拟器背景上远远不够。机械臂/物体的几何大小、坐标系和相机视角只要有误差，就会造成训练时的抓取像素与真实操作位置不一致。RE³SIM 的研究重点是**将前景可碰撞几何与背景视觉重建分开处理、再统一配准到真实机器人的几何坐标系**。
 
-### ④ 方法总览与论文主图
-- [作者原始方法主图 Framework（官方 PNG）](https://re3sim.github.io/static/images/pipeline.png)｜[对应论文 PDF](https://arxiv.org/pdf/2502.08645)。
-- 原图依次展示：前景对象建模、背景视觉重建、机器人/相机对齐、物理场景搭建、脚本专家生成示教，以及从模拟数据训练后部署真机。注意这里的“高视觉真实感”针对可见背景；物体运动与碰撞仍由几何和 PhysX 负责。
+### ④ 方法总览与原论文截图
 
-![RE³SIM 中文方法重绘](../../assets/methods/RE3SIM.svg)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2502.08645)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：实景任务与 Real-to-Sim-to-Real 系统**
+
+![RE3SIM 原论文主图 Figure 1](../../assets/paper-screenshots/RE3SIM-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://arxiv.org/pdf/2502.08645#page=1)。*
+
+**方法/架构图｜Figure 2：前景 Mesh、背景 3DGS 和专家轨迹生产方法**
+
+![RE3SIM 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/RE3SIM-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://arxiv.org/pdf/2502.08645#page=3)。*
+
+**读图重点：** 主图概括实景任务及仿真生成效果；方法图给出前景重建、背景渲染、真实坐标对齐和专家采样流程。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，场景解耦重建。** 将需要碰撞和抓取的操作对象恢复为显式 Mesh，将静态场景背景重建为 3DGS；这样不必用单一表示承担视觉和动力学两类相互矛盾的职责。
@@ -123,15 +151,25 @@ flowchart LR
 ### ③ 研究动机与核心问题
 渲染器的真实感与模拟器的运动学/动作正确性可以拆开优化：模拟器负责“机器人在哪里、做了什么”，视频生成器负责“应该以怎样的真实 RGB 外观呈现”。不同于对每一帧独立做风格迁移，视频级生成必须保证**同一场景多摄像机视角一致、机器人外形不发生幻觉以及动作标签不因视觉合成而失效**。
 
-### ④ 方法总览与论文主图
-- [作者原始视频模型结构图（官方 PNG）](https://robo-render.github.io/static/images/fig2_model.png)｜[训练数据示意图](https://robo-render.github.io/static/images/training-data.png)。
-- 主图突出条件视频生成器：深度序列与机器人 RGB Mask 作为几何/本体条件，语言给出任务语义，多视角视频共同进入生成过程；输出 RGB 视频，动作序列由原仿真器沿用，而非让视频生成模型自主推断动作。
+### ④ 方法总览与原论文截图
 
-![RoboRender 原论文视频模型主图（本仓库留存）](../../assets/paper-figures/RoboRender_model.png)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2610.09254)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
 
-*作者原始图源：[点击核对](https://robo-render.github.io/static/images/fig2_model.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+**主图｜Figure 1：模拟视频转换成逼真机器人物理操作视频**
 
-![RoboRender 中文方法重绘](../../assets/methods/RoboRender.svg)
+![RoboRender 原论文主图 Figure 1](../../assets/paper-screenshots/RoboRender-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://arxiv.org/pdf/2610.09254#page=1)。*
+
+**方法/架构图｜Figure 2：深度、机器人 Mask 与多视角视频生成模型**
+
+![RoboRender 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/RoboRender-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://arxiv.org/pdf/2610.09254#page=3)。*
+
+**读图重点：** 主图展示 Sim-to-Real 生成效果；模型图说明深度、机器人 Mask、语言和多视角条件的融合。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，建立机器人专用的视频生成器。** 项目将 Wan2.1-T2V-1.3B 适配成机器人视频渲染模型，并用约 13 万条真实机器人操作片段微调（官网列出 AgiBot-World-Alpha 和 DROID 来源）。真实样本用于**训练渲染器**，因此“策略零样本迁移”不代表整个系统没有使用任何真实数据。

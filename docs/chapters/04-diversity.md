@@ -15,11 +15,25 @@
 ### ③ 研究动机与核心问题
 复杂双臂任务的成本瓶颈，不只是“示教数据条数少”，而是**为每个任务写一个稳健可执行专家程序耗费大量人工**。当物体位置或双手协作时序变化，脚本专家往往失败。RoboTwin 2.0 将专家程序本身变成可由 MLLM 生成、在模拟器运行、再通过失败反馈修改的对象，从而扩展任务和初始状态覆盖。
 
-### ④ 方法总览与论文主图
-- [作者官方项目总览图（Teaser，大文件）](https://robotwin-platform.github.io/assets/images/teaser.png)｜[跨本体示意图](https://robotwin-platform.github.io/assets/images/cross-embodiment.png)｜[ICML 论文与 Fig.1](https://proceedings.mlr.press/v306/chen26j.html)。
-- 正式论文的核心方法应结合论文 Framework 阅读：资产库、MLLM 专家生成、仿真验证反馈、环境随机化、批量收集和评估组成一条流水线；Teaser 属于项目能力展示，不能替代方法结构图。
+### ④ 方法总览与原论文截图
 
-![RoboTwin 2.0 中文方法重绘](../../assets/methods/RoboTwin.svg)
+下列图片均是从[原论文 PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：自动化双臂操作数据生产平台**
+
+![RoboTwin 原论文主图 Figure 1](../../assets/paper-screenshots/RoboTwin-overview.jpg)
+
+*原论文 Figure 1，PDF 第 2 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf#page=2)。*
+
+**方法/架构图｜Figure 2：Code Agent 专家生成与仿真反馈纠错 Pipeline**
+
+![RoboTwin 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/RoboTwin-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 4 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf#page=4)。*
+
+**读图重点：** 主图展示任务和资产规模；方法图则详细展示 Code Agent 编写、模拟器验证和程序迭代闭环。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，资产与任务定义。** 基础资产库 RoboTwin-OD 提供丰富类别实例与语义信息；配置任务初态、参与对象、双臂本体和目标成功条件。对象变化不等于动作自动可行，专家程序仍需在新初态下被检查。
@@ -67,15 +81,25 @@ flowchart TD
 ### ③ 研究动机与核心问题
 对扩散模型直接输入“机器人拿起某物”的文本，可能生成与真实机器人关节/夹爪运动不一致的视频。RoboDream 的关键是将**已经存在的机器人轨迹视为硬约束或强先验**，让生成模型改变对象和场景的视觉呈现，从而尽量保留动作配对关系。
 
-### ④ 方法总览与论文主图
-- [官方论文 Figure 1（PDF）](https://arxiv.org/pdf/2606.02577)｜[作者项目及生成演示](https://junjieye.com/RoboDream/)｜[官方 Teaser 动画](https://github.com/Jay-Ye/RoboDream/blob/main/assets/teaser.gif)。
-- Teaser 是“轨迹复用/空手遥操/组合生成”的输出展示，不应与网络结构图混同。方法图重点应识别 rendered robot-only video、scene/object priors 和动作条件的融合方式。
+### ④ 方法总览与原论文截图
 
-![RoboDream 作者发布的 Teaser 动画（非论文方法主图）](../../assets/paper-figures/RoboDream_teaser.gif)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2606.02577)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
 
-*作者原始图源：[点击核对](https://github.com/Jay-Ye/RoboDream/blob/main/assets/teaser.gif)；论文主图/展示图与下方中文重绘图已明确区分。*
+**主图｜Figure 1：组合式世界模型扩增机器人示教**
 
-![RoboDream 中文方法重绘](../../assets/methods/RoboDream.svg)
+![RoboDream 原论文主图 Figure 1](../../assets/paper-screenshots/RoboDream-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://arxiv.org/pdf/2606.02577#page=1)。*
+
+**方法/架构图｜Figure 2：运动条件与场景/物体先验融合架构**
+
+![RoboDream 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/RoboDream-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://arxiv.org/pdf/2606.02577#page=3)。*
+
+**读图重点：** 总览展示跨物体、场景和视角生成；架构图展示本体运动和多种视觉先验进入视频模型。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，获得可追溯运动。** 可从既有机器人数据中检索轨迹，也可从 prop-free teleoperation 中获取机械臂/末端执行器运动。与凭空生成整个动作序列不同，这些轨迹先确定机器人的可实现运动。
@@ -123,11 +147,25 @@ flowchart LR
 ### ③ 研究动机与核心问题
 大量物体摆放、抓放类演示的核心监督可能是**物体位姿随时间变化、以及机器人应该如何跟随这个目标**。如果只为生成训练数据而强制运行复杂接触求解器，成本很高。R2R2R 有意将“动作运动学合理”和“需要完整动力学模拟”拆开，从一条真实人类示范重建目标运动，再反推机器人运动。
 
-### ④ 方法总览与论文主图
-- [CoRL 正式论文（含方法主图）](https://proceedings.mlr.press/v305/yu25a.html)｜[作者 GitHub README 与示范](https://github.com/uynitsuj/real2render2real)。
-- 与一般照片级数字孪生不同，原流程的关键在手机扫描、对象 6-DoF 追踪、3DGS/网格资产、逆运动学轨迹生成和无动力学并行渲染；不要把它误写成用 PhysX 高精度模拟碰撞。
+### ④ 方法总览与原论文截图
 
-![Real2Render2Real 中文方法重绘](../../assets/methods/R2R2R.svg)
+下列图片均是从[原论文 PDF](https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：从手机扫描到机器人训练数据的完整流程**
+
+![R2R2R 原论文主图 Figure 1](../../assets/paper-screenshots/R2R2R-overview.jpg)
+
+*原论文 Figure 1，PDF 第 2 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf#page=2)。*
+
+**第二张关键实验图｜Figure 2：数据生成效率与真实策略效果（关键实验图）**
+
+![R2R2R 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/R2R2R-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 3 页。[查看原文对应页](https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf#page=3)。*
+
+**读图重点：** Figure 1 已展示数据生产的主要步骤；Figure 2 是性能与效率对照，并非第二张架构图。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，从真实世界提取资产和目标动作。** 手机扫描对象以恢复 3D 几何/外观；从单条人类视频估计物体随时间的六自由度运动。对于可动部件，需保留对象整体与局部运动关系。
@@ -175,15 +213,25 @@ CoRL 正式论文报告，在论文测试的真实操作场景中，一条人类
 ### ③ 研究动机与核心问题
 同一长轨迹中可能同时包含关键操作、停顿、无效动作和完全重复的靠近过程。整条轨迹“一刀切”地保留或删除会损失有效部分。SCIZOR 的目标是让**监督数据的训练效用，而不是示教数量**成为优化对象；这属于“轨迹有效多样性”的数据策展路线。
 
-### ④ 方法总览与论文主图
-- [作者原论文 Figure 1：官方总览图](https://ut-austin-rpl.github.io/SCIZOR/images/teasor_figure_v2.5.png)｜[官方项目](https://ut-austin-rpl.github.io/SCIZOR/)。
-- 原图左侧是大规模混合质量轨迹，中间分为“次优转移”和“冗余转移”两条筛选支路，右侧是更紧凑的训练数据集与策略表现比较。
+### ④ 方法总览与原论文截图
 
-![SCIZOR 原论文总览主图（本仓库留存）](../../assets/paper-figures/SCIZOR_overview.png)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2505.22626)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
 
-*作者原始图源：[点击核对](https://ut-austin-rpl.github.io/SCIZOR/images/teasor_figure_v2.5.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+**主图｜Figure 1：次优和冗余转移筛选的整体过程**
 
-![SCIZOR 中文方法重绘](../../assets/methods/SCIZOR.svg)
+![SCIZOR 原论文主图 Figure 1](../../assets/paper-screenshots/SCIZOR-overview.jpg)
+
+*原论文 Figure 1，PDF 第 2 页。[查看原文对应页](https://arxiv.org/pdf/2505.22626#page=2)。*
+
+**方法/架构图｜Figure 2：任务进度模型和联合状态动作去重框架**
+
+![SCIZOR 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/SCIZOR-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 4 页。[查看原文对应页](https://arxiv.org/pdf/2505.22626#page=4)。*
+
+**读图重点：** Figure 1 说明筛选数据的目标；Figure 2 展示任务进度评价和聚类去冗余两个分支。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，统一状态—动作样本单元。** 从示教序列中取得观测、动作和连续时间片段，支持在整条轨迹内部做细粒度判断，而不是为每条 Episode 打单一好坏标签。

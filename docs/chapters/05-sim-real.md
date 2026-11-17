@@ -15,15 +15,25 @@
 ### ③ 研究动机与核心问题
 过去很多研究问“模拟数据与真实数据比例多少最佳”，MetaGenSim 更进一步问：**在固定生成预算下，应该主动生成哪些物体位置、场景配置、技能条件与运动难度，才能最有效提高真实域表现？** 均匀覆盖参数空间并不总有用；过多偏离真实目标任务的样本甚至会导致负迁移。
 
-### ④ 方法总览与论文主图
-- [作者原始 Method Figure（官方 PNG）](https://meta-gensim.github.io/static/images/method.png)｜[Algorithm 1 与可交互方法说明](https://meta-gensim.github.io/)。
-- 原图三部分：(a) 通过真实验证损失的元梯度训练 Rater；(b) 将样本效用映射到模拟器参数并用 KDE 构建参数效用分布；(c) 从该分布抽样生成新数据并 Sim-Real Co-train。
+### ④ 方法总览与原论文截图
 
-![MetaGenSim 原论文三阶段方法图（本仓库留存）](../../assets/paper-figures/MetaGenSim_method.png)
+下列图片均是从[原论文 PDF](https://arxiv.org/pdf/2610.19479)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
 
-*作者原始图源：[点击核对](https://meta-gensim.github.io/static/images/method.png)；论文主图/展示图与下方中文重绘图已明确区分。*
+**主图｜Figure 1：主动优化模拟数据以提高真机表现的总览**
 
-![MetaGenSim 中文方法重绘](../../assets/methods/MetaGenSim.svg)
+![MetaGenSim 原论文主图 Figure 1](../../assets/paper-screenshots/MetaGenSim-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://arxiv.org/pdf/2610.19479#page=1)。*
+
+**方法/架构图｜Figure 2：元学习样本评分与模拟器参数分布优化**
+
+![MetaGenSim 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/MetaGenSim-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 4 页。[查看原文对应页](https://arxiv.org/pdf/2610.19479#page=4)。*
+
+**读图重点：** Figure 1 介绍数据效用思想；Figure 2 展示 Rater、KDE 和主动生成三阶段方法。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，定义可控的生成参数空间。** 用户指定模拟器可调的参数 (phi)，例如物体位置与任务组成；先随机或按探索策略生成一组探测样本 (D_{probe})，同时准备少量真实示教 (D_R)。
@@ -73,11 +83,25 @@ flowchart TD
 ### ③ 研究动机与核心问题
 **问题不只是模拟环境像不像现实，而是模型能否从大量模拟数据提取与真实任务共享的动作结构。** 如果数字孪生要求每个材质、纹理、物理参数都一致，构建成本会非常高。作者提出 Task-Aware Digital Cousins：匹配任务语义、对象与容器关系、成功目标和合理初始条件，比追求每个像素完全相同更重要。
 
-### ④ 方法总览与论文主图
-- [作者项目：任务感知数字近邻和核心实验图](https://co-training.github.io/)｜[RSS 论文 PDF（含方法/实验图）](https://www.roboticsproceedings.org/rss21/p109.pdf)。
-- 原文并非提出一个复杂全新架构，而是通过多组配置对照研究：真实示教、任务匹配的模拟数据、历史通用模拟数据、训练采样混合，以及在真实机器人上的验证。
+### ④ 方法总览与原论文截图
 
-![Sim-and-Real Co-training 中文方法重绘](../../assets/methods/CoTraining.svg)
+下列图片均是从[原论文 PDF](https://www.roboticsproceedings.org/rss21/p109.pdf)直接裁切的**原始论文图**，已保存于本仓库，非 AI 生成或重新绘制。引用时请注明论文 Figure 编号。
+
+**主图｜Figure 1：真实任务与仿真示教协同训练总览**
+
+![CoTraining 原论文主图 Figure 1](../../assets/paper-screenshots/CoTraining-overview.jpg)
+
+*原论文 Figure 1，PDF 第 1 页。[查看原文对应页](https://www.roboticsproceedings.org/rss21/p109.pdf#page=1)。*
+
+**方法/架构图｜Figure 2：任务感知数字近邻构造和训练 Pipeline**
+
+![CoTraining 原论文第二张关键图 Figure 2](../../assets/paper-screenshots/CoTraining-architecture.jpg)
+
+*原论文 Figure 2，PDF 第 4 页。[查看原文对应页](https://www.roboticsproceedings.org/rss21/p109.pdf#page=4)。*
+
+**读图重点：** 总览解释真实任务、模拟数据及策略训练；方法图细分任务设置、数据准备与混合训练。
+
+*图号、原论文 URL 及 PDF 截取坐标记录在 [截图来源清单](../../assets/paper-screenshots/manifest.json)。详细中文 Pipeline 见下一节。*
 
 ### ⑤ 核心技术与算法细节
 **步骤一，选择模拟数据来源。** 作者使用两类数据：与目标真实任务相似的 Digital Cousins，以及以前就存在、与目标任务未必完全匹配的多任务模拟数据。前者任务语义更接近，后者在规模和复用上更有优势。
