@@ -42,8 +42,11 @@ MANUAL_CROPS = {
     "MetaGenSim": {
         "overview": (0, [32, 341, 585, 615], 1, "Figure 1: Active Generative Simulation overview"),
     },
+    "CoTraining": {
+        "overview": (0, [305, 190, 577, 590], 1, "Fig. 1: Sim-and-Real Co-Training overview"),
+    },
 }
-REFRESH = {"PIN-WM", "CoTraining", "MetaGenSim", "RoboTwin"}
+REFRESH = {"CoTraining"}
 
 FIG_RE = re.compile(r"^\s*(?:fig\.?|figure)\s*(\d+)\s*[:.\-\u2014]", re.IGNORECASE)
 SESSION = requests.Session()
@@ -165,7 +168,7 @@ def main():
             raw, paperurl = download_pdf(urls)
             doc = fitz.open(stream=raw, filetype="pdf")
             if slug == "CoTraining":
-                for i in range(min(3,len(doc))):
+                for i in range(min(7,len(doc))):
                     pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False)
                     im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples)
                     im.save(DEST/f"CoTraining-PDF-page-{i+1}-preview.jpg","JPEG",quality=85,optimize=True)
