@@ -13,12 +13,13 @@
 - [第 5 章｜真实与仿真数据协同](docs/chapters/05-sim-real.md)：MetaGenSim、Sim-and-Real Co-Training
 - [论文/代码/图源索引](papers/catalog.csv)｜[图源说明](figures/README.md)
 
-## 图片与图表
+## 原论文截图与流程图
 
-`assets/paper-figures/` 放置能够从作者公开资料取得的部分原始论文图，**每张均在正文标明出处**；其余作者主图保留论文 PDF/项目主页链接。不是所有论文原图都可在无网络环境下复现。  
-`assets/methods/` 包含 **12 张仓库内的 SVG 中文方法流程图**，保证 GitHub Markdown 不依赖其他图床也能展示；各篇还有 Mermaid 详细 Pipeline。
+目前已直接嵌入 **24 张来自原始论文 PDF 的截图（12 篇论文 × 2 张）**，每篇包含论文主图和方法架构图／第二张关键图；全部存储在 [assets/paper-screenshots](assets/paper-screenshots/)，在 GitHub 的 Markdown 页面上无需访问外部图床即可显示。
 
-作者原图与中文重绘图已区别标注；请勿将重绘图引用为论文原始 Figure。
+每张图标明作者原论文 Figure 编号、PDF 页码和原始链接。**SPARR** 使用 Figure 1 与 Figure 3，**Real2Render2Real** 的第二张是 Figure 2 数据效率与性能对照图（而非另一个网络架构图）。[查看逐篇图源索引](figures/README.md)；[查看原论文及截图裁切信息](assets/paper-screenshots/manifest.json)。
+
+[中文自绘方法流程图](assets/methods/) 另有 12 张 SVG；它们与论文截图严格区分，正文仍保留 Mermaid Pipeline。
 
 ## 仓库结构
 
@@ -32,11 +33,14 @@ docs/
     04-diversity.md
     05-sim-real.md
 assets/
-  methods/            # 12 张可靠的 SVG 中文流程图
-  paper-figures/      # 5 张来源明确的原图/作者展示图
+  paper-screenshots/   # 24 张论文 PDF 截图 + 来源清单
+  methods/             # 12 张自绘中文 SVG 方法流程图
+  paper-figures/       # 旧版官网原图素材备份
 figures/README.md      # 原图来源和显示方式
 papers/catalog.csv     # 结构化文献索引（不使用论文等级）
 scripts/publish_to_github.sh
+scripts/capture_paper_figures.py
+.github/workflows/capture-figures.yml
 ```
 
 本仓库独立研究 Sim-to-Real，不关联任何特定 instruct-WAM 课题。论文概述依据英文 Abstract 忠实中文译述；方法分析和横向比较为本调研独立整理。更新于 2026-11-17。

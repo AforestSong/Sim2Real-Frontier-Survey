@@ -1,22 +1,28 @@
-# 论文原图与中文流程图索引
+# 作者原始论文截图索引（2025–2026）
 
-为解决原来由外部图床导致的图片无法显示问题，已将**5 份原始作者公开图文件**和**12 张本仓库中文 SVG 方法重绘图**提交至 GitHub。正文优先嵌入仓库本地图；其它大文件使用作者原图链接，不再插入无法保障显示的远程主图。图片资料的学术引用应注明来源；原图版权及再使用条件请以作者说明为准。
+中文综述每篇直接插入两张**从原论文 PDF 截取的图**；文件保存在仓库内而非外部图床。下方页码表示本次采用的 PDF 页码（从 1 开始），可能与论文印刷页码不同。
 
-| 工作 | 已保存的原图/展示图 | 作者原图链接 | 中文流程图 |
+| 论文 | 论文主图（Figure 及 PDF 页码） | 方法架构图 / 第二张关键图 | 原论文 PDF |
 |---|---|---|---|
-| GSWorld | 仅中文重绘（原 Teaser 约 42 MB） | [官方 Figure 1](https://3dgsworld.github.io/resources/gsworld.pdf#page=1) | [SVG](../assets/methods/GSWorld.svg) |
-| RE³SIM | 仅中文重绘（原 PNG 约 4 MB） | [Framework](https://re3sim.github.io/static/images/pipeline.png) | [SVG](../assets/methods/RE3SIM.svg) |
-| RoboRender | [模型结构原图](../assets/paper-figures/RoboRender_model.png) | [官网](https://robo-render.github.io/static/images/fig2_model.png) | [SVG](../assets/methods/RoboRender.svg) |
-| SPARR | 仅中文重绘（作者官网托管） | [Pipeline Overview](https://research.nvidia.com/labs/srl/projects/sparr/assets/overview.png) | [SVG](../assets/methods/SPARR.svg) |
-| SoMA | 仅中文重绘（原 PNG 约 2.8 MB） | [Framework](https://city-super.github.io/SoMA/imgs_png/framework.png) | [SVG](../assets/methods/SoMA.svg) |
-| PIN-WM | [方法原图](../assets/paper-figures/PIN-WM_pipeline.png) | [官网](https://pinwm.github.io/static/images/pipline.png) | [SVG](../assets/methods/PIN-WM.svg) |
-| RoboTwin 2.0 | 仅中文重绘（原总览图约 5.8 MB） | [官方总览图](https://robotwin-platform.github.io/assets/images/teaser.png) | [SVG](../assets/methods/RoboTwin.svg) |
-| RoboDream | [官方 Teaser 动画（不是方法主图）](../assets/paper-figures/RoboDream_teaser.gif) | [论文](https://arxiv.org/pdf/2606.02577) | [SVG](../assets/methods/RoboDream.svg) |
-| Real2Render2Real | 仅中文重绘 | [CoRL 正式论文（含图）](https://proceedings.mlr.press/v305/yu25a.html) | [SVG](../assets/methods/R2R2R.svg) |
-| SCIZOR | [方法总览主图](../assets/paper-figures/SCIZOR_overview.png) | [官网](https://ut-austin-rpl.github.io/SCIZOR/images/teasor_figure_v2.5.png) | [SVG](../assets/methods/SCIZOR.svg) |
-| MetaGenSim | [三阶段方法主图](../assets/paper-figures/MetaGenSim_method.png) | [官网](https://meta-gensim.github.io/static/images/method.png) | [SVG](../assets/methods/MetaGenSim.svg) |
-| Sim-and-Real Co-Training | 仅中文重绘 | [RSS 论文 PDF](https://www.roboticsproceedings.org/rss21/p109.pdf) | [SVG](../assets/methods/CoTraining.svg) |
+| GSWorld | [Fig.1 · p.1](../assets/paper-screenshots/GSWorld-overview.jpg) | [Fig.2 · p.3](../assets/paper-screenshots/GSWorld-architecture.jpg) | [论文原文](https://3dgsworld.github.io/resources/gsworld.pdf) |
+| RE³SIM | [Fig.1 · p.1](../assets/paper-screenshots/RE3SIM-overview.jpg) | [Fig.2 · p.3](../assets/paper-screenshots/RE3SIM-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2502.08645) |
+| RoboRender | [Fig.1 · p.1](../assets/paper-screenshots/RoboRender-overview.jpg) | [Fig.2 · p.3](../assets/paper-screenshots/RoboRender-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2610.09254) |
+| SPARR | [Fig.1 · p.1](../assets/paper-screenshots/SPARR-overview.jpg) | [Fig.3 · p.4](../assets/paper-screenshots/SPARR-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2602.23253) |
+| SoMA | [Fig.1 · p.1](../assets/paper-screenshots/SoMA-overview.jpg) | [Fig.2 · p.3](../assets/paper-screenshots/SoMA-architecture.jpg) | [论文原文](https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf) |
+| PIN-WM | [Fig.1 · p.1](../assets/paper-screenshots/PIN-WM-overview.jpg) | [Fig.2 · p.4](../assets/paper-screenshots/PIN-WM-architecture.jpg) | [论文原文](https://www.roboticsproceedings.org/rss21/p153.pdf) |
+| RoboTwin 2.0 | [Fig.1 · p.2](../assets/paper-screenshots/RoboTwin-overview.jpg) | [Fig.2 · p.4](../assets/paper-screenshots/RoboTwin-architecture.jpg) | [论文原文](https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf) |
+| RoboDream | [Fig.1 · p.1](../assets/paper-screenshots/RoboDream-overview.jpg) | [Fig.2 · p.3](../assets/paper-screenshots/RoboDream-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2606.02577) |
+| Real2Render2Real | [Fig.1 · p.2](../assets/paper-screenshots/R2R2R-overview.jpg) | [Fig.2 · p.3（实验图）](../assets/paper-screenshots/R2R2R-architecture.jpg) | [论文原文](https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf) |
+| SCIZOR | [Fig.1 · p.2](../assets/paper-screenshots/SCIZOR-overview.jpg) | [Fig.2 · p.4](../assets/paper-screenshots/SCIZOR-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2505.22626) |
+| MetaGenSim | [Fig.1 · p.1](../assets/paper-screenshots/MetaGenSim-overview.jpg) | [Fig.2 · p.4](../assets/paper-screenshots/MetaGenSim-architecture.jpg) | [论文原文](https://arxiv.org/pdf/2610.19479) |
+| Sim-and-Real Co-Training | [Fig.1 · p.1](../assets/paper-screenshots/CoTraining-overview.jpg) | [Fig.2 · p.4](../assets/paper-screenshots/CoTraining-architecture.jpg) | [论文原文](https://www.roboticsproceedings.org/rss21/p109.pdf) |
 
-## 如何检查
+## 图像来源与使用说明
 
-GitHub 中点击任意“SVG”可直接查看图像文件，不依赖作者站点。Markdown 中引用方式为 `![中文方法流程图](../../assets/methods/GSWorld.svg)`（`docs/chapters/` 内的章节文件），或 `![中文方法流程图](../assets/methods/GSWorld.svg)`（`docs/` 目录中的总综述文件）。原始主图和本仓库重绘图均保留清晰说明，严禁混淆。
+1. 截图源于作者原始 PDF 中对应 Figure；只截取、裁切和编码保存，不使用图像生成模型重新绘制。请引用作者论文。
+2. [截图溯源 Manifest](../assets/paper-screenshots/manifest.json) 包含来源 PDF、Figure 编号、PDF 页码、裁切区域及文件路径。
+3. [Python 提取脚本](../scripts/capture_paper_figures.py) 与 [GitHub Actions 工作流](../.github/workflows/capture-figures.yml) 可用于重新提取和修复裁切。
+4. 自绘的中文流程图保存在 [assets/methods](../assets/methods/)，不同于原论文截图；另外一些历史作者网站图片仍在 `assets/paper-figures/`。
+5. **Real2Render2Real** 的 Figure 1 已展示数据生产全流程，Figure 2 属于数据生成效率与真实策略表现，未将其误称为“架构图”。
+
+图片著作权归各论文的权利人所有；本仓库仅用于带出处的学术调研阅读。
