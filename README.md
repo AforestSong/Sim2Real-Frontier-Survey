@@ -42,9 +42,9 @@ Sim2Real-Frontier-Survey/
 
 GitHub 可渲染正文中的 Mermaid 流程图。官方论文图片使用原始 URL，不在仓库中复制版权未明确的图像；联网时可以直接显示。如果官方网页迁移，请参考 [`figures/README.md`](figures/README.md) 中的图片清单。
 
-## 如何发布
+## 仓库维护
 
-本仓库已经整理成可直接上传的 Git 目录。参阅 `scripts/publish_to_github.sh`；该脚本需要你自己的 GitHub CLI 登录会话。请勿把个人 access token 传进仓库或公开聊天。
+本仓库已发布至 [hellojean123/Sim2Real-Frontier-Survey](https://github.com/hellojean123/Sim2Real-Frontier-Survey)。推荐直接在 GitHub 预览 [中文完整综述](docs/Sim2Real_前沿技术路线综述_2025-2026.md)，通过 `papers/catalog.csv` 维护论文链接和证据等级。未来如需更新文件，可先 clone 仓库并使用 `scripts/publish_to_github.sh` 提交；该脚本不会强制覆盖远端历史。请勿将 access token 提交到仓库。
 
 ## 说明
 
