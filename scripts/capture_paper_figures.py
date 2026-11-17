@@ -25,13 +25,26 @@ PAPERS = [
     ("SoMA", ["https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf"], 1, 2),
     ("PIN-WM", ["https://www.roboticsproceedings.org/rss21/p153.pdf"], 1, 2),
     ("RoboTwin", ["https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf",
-                 "https://robotwin-platform.github.io/paper.pdf"], 1, 3),
+                 "https://robotwin-platform.github.io/paper.pdf"], 1, 2),
     ("RoboDream", ["https://arxiv.org/pdf/2606.02577"], 1, 2),
     ("R2R2R", ["https://raw.githubusercontent.com/mlresearch/v305/main/assets/yu25a/yu25a.pdf"], 1, 2),
     ("SCIZOR", ["https://arxiv.org/pdf/2505.22626"], 1, 2),
     ("MetaGenSim", ["https://arxiv.org/pdf/2610.19479"], 1, 2),
     ("CoTraining", ["https://www.roboticsproceedings.org/rss21/p109.pdf"], 1, 2),
 ]
+# Manual, PDF-point crop rectangles for papers with image-only captions and
+# layouts where Figure 1 spans both columns despite a narrow caption line.
+MANUAL_CROPS = {
+    "PIN-WM": {
+        "overview": (0, [305, 195, 575, 403], 1, "Fig. 1: PIN-WM learning and physical digital cousins"),
+        "architecture": (3, [42, 54, 570, 353], 2, "Fig. 2: Physics-informed Real2Sim2Real framework"),
+    },
+    "MetaGenSim": {
+        "overview": (0, [32, 341, 585, 615], 1, "Figure 1: Active Generative Simulation overview"),
+    },
+}
+REFRESH = {"PIN-WM", "CoTraining", "MetaGenSim", "RoboTwin"}
+
 FIG_RE = re.compile(r"^\s*(?:fig\.?|figure)\s*(\d+)\s*[:.\-\u2014]", re.IGNORECASE)
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": "Mozilla/5.0 (compatible; AcademicFigureCapture/1.0; +https://github.com/hellojean123/Sim2Real-Frontier-Survey)"})
@@ -121,15 +134,41 @@ def screenshot_figure(doc, cap, out_file):
     return {"page": cap["page"]+1, "figure": cap["figure"],
             "caption": cap["caption"], "crop_pdf_points": [round(v,1) for v in rect]}
 
+def manual_screenshot(doc, spec, output):
+    page_index, coords, figure_no, caption = spec
+    page = doc[page_index]
+    r = fitz.Rect(coords) & page.rect
+    pix = page.get_pixmap(matrix=fitz.Matrix(2.2, 2.2), clip=r, alpha=False)
+    import io
+    im = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
+    if im.width > 1900:
+        im.thumbnail((1900,1900), Image.Resampling.LANCZOS)
+    im.save(output, "JPEG", quality=91, optimize=True, progressive=True)
+    return {"page": page_index+1, "figure": figure_no,
+            "caption": caption, "crop_pdf_points": [round(v,1) for v in r]}
+
 def main():
+    old_path=DEST/"manifest.json"
+    previous=json.loads(old_path.read_text(encoding="utf-8")) if old_path.exists() else {"papers":{}}
     manifest = {"generated_from": "original paper PDFs, cropped as screenshots with PyMuPDF",
                 "note": "Figure number and PDF page are reported individually; images may include immediate neighboring captions.",
                 "papers": {}, "failures": []}
     for slug, urls, overview_no, arch_no in PAPERS:
         print(f"Processing {slug}", flush=True)
+        if slug not in REFRESH and slug in previous.get("papers", {}):
+            old_entry=previous["papers"][slug]
+            if all((ROOT/screenshot["path"]).exists() for screenshot in old_entry.get("screenshots",{}).values()) and len(old_entry.get("screenshots",{})) == 2:
+                manifest["papers"][slug]=old_entry
+                print("  reusing verified previous screenshot pair",flush=True)
+                continue
         try:
             raw, paperurl = download_pdf(urls)
             doc = fitz.open(stream=raw, filetype="pdf")
+            if slug == "CoTraining":
+                for i in range(min(3,len(doc))):
+                    pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False)
+                    im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples)
+                    im.save(DEST/f"CoTraining-PDF-page-{i+1}-preview.jpg","JPEG",quality=85,optimize=True)
             found = scan_captions(doc)
             group = {"pdf": paperurl, "available_figure_numbers": sorted(set(c["figure"] for c in found)),
                      "screenshots": {}}
@@ -139,12 +178,16 @@ def main():
                 if not candidates and kind == "architecture":
                     candidates = [c for c in found if c["figure"] not in (overview_no,) and
                                   (c["page"],c["figure"]) not in used]
+                manual = MANUAL_CROPS.get(slug,{}).get(kind)
+                if not candidates and manual:
+                    candidates = [{"figure":manual[2],"page":manual[0],"caption":manual[3],"box":manual[1]}]
                 if not candidates:
                     manifest["failures"].append({"paper": slug, "kind": kind, "error": "caption not located"})
                     continue
                 cap = candidates[0]
                 filename = f"{slug}-{kind}.jpg"
-                details = screenshot_figure(doc,cap,DEST/filename)
+                manual = MANUAL_CROPS.get(slug,{}).get(kind)
+                details = manual_screenshot(doc,manual,DEST/filename) if manual else screenshot_figure(doc,cap,DEST/filename)
                 used.add((cap["page"],cap["figure"]))
                 group["screenshots"][kind] = {"path": "assets/paper-screenshots/"+filename, **details}
                 print(f"  {kind}: Fig. {cap['figure']} page {cap['page']+1}",flush=True)
