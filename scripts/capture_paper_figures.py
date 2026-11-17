@@ -21,7 +21,7 @@ PAPERS = [
                 "https://arxiv.org/pdf/2510.20813"], 1, 2),
     ("RE3SIM", ["https://arxiv.org/pdf/2502.08645"], 1, 2),
     ("RoboRender", ["https://arxiv.org/pdf/2610.09254"], 1, 2),
-    ("SPARR", ["https://arxiv.org/pdf/2602.23253"], 1, 2),
+    ("SPARR", ["https://arxiv.org/pdf/2602.23253"], 1, 3),
     ("SoMA", ["https://raw.githubusercontent.com/mlresearch/v306/main/assets/huang26bh/huang26bh.pdf"], 1, 2),
     ("PIN-WM", ["https://www.roboticsproceedings.org/rss21/p153.pdf"], 1, 2),
     ("RoboTwin", ["https://raw.githubusercontent.com/mlresearch/v306/main/assets/chen26j/chen26j.pdf",
@@ -42,12 +42,15 @@ MANUAL_CROPS = {
     "MetaGenSim": {
         "overview": (0, [32, 341, 585, 615], 1, "Figure 1: Active Generative Simulation overview"),
     },
+    "SCIZOR": {
+        "architecture": (3, [52, 64, 561, 303], 2, "Figure 2: SCIZOR architecture for suboptimal-transition removal and deduplication"),
+    },
     "CoTraining": {
         "overview": (0, [305, 190, 577, 590], 1, "Fig. 1: Sim-and-Real Co-Training overview"),
         "architecture": (3, [44, 47, 574, 280], 2, "Fig. 2: Method overview: task-aware digital cousins and sim-real policy co-training"),
     },
 }
-REFRESH = {"CoTraining"}
+REFRESH = {"SCIZOR", "SPARR"}
 
 FIG_RE = re.compile(r"^\s*(?:fig\.?|figure)\s*(\d+)\s*[:.\-\u2014]", re.IGNORECASE)
 SESSION = requests.Session()
