@@ -19,4 +19,4 @@
 
 ## 如何检查
 
-GitHub 中点击任意“SVG”可直接查看图像文件，不依赖作者站点。Markdown 中引用方式为 `![中文方法流程图](../../assets/methods/GSWorld.svg)`（章节文件）或 `../assets/methods/GSWorld.svg`（总综述文件）。原始主图和本仓库重绘图均保留清晰说明，严禁混淆。
+GitHub 中点击任意“SVG”可直接查看图像文件，不依赖作者站点。Markdown 中引用方式为 `![中文方法流程图](../../assets/methods/GSWorld.svg)`（`docs/chapters/` 内的章节文件），或 `![中文方法流程图](../assets/methods/GSWorld.svg)`（`docs/` 目录中的总综述文件）。原始主图和本仓库重绘图均保留清晰说明，严禁混淆。
